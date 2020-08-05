@@ -1,7 +1,6 @@
 #ifndef MNISTFILEREADER_H
 #define MNISTFILEREADER_H
 
-#include <iostream>
 #include <fstream>
 
 
@@ -9,15 +8,16 @@ class MnistFileReader
 {
 public:
     MnistFileReader(const char* fileName);
-    int maginNumber;
+    int magicNumber;
     int numberOfImages;
     int numberOfRows;
     int numberOfColumns;
 
-    unsigned char* getNextImage();
+    void getNextImage(char* target);
 
 private:
     std::ifstream source;
+    int imageLength;
 };
 
 #endif // MNISTFILEREADER_H

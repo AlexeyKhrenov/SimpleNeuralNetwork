@@ -27,12 +27,16 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     imagearea.cpp \
-    mnistfilereader.cpp
+    mnistfilereader.cpp \
+    labelfilereader.cpp \
+    model.cpp
 
 HEADERS += \
         mainwindow.h \
     imagearea.h \
-    mnistfilereader.h
+    mnistfilereader.h \
+    labelfilereader.h \
+    model.h
 
 FORMS += \
         mainwindow.ui

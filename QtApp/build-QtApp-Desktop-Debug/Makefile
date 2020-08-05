@@ -53,13 +53,15 @@ OBJECTS_DIR   = ./
 SOURCES       = ../QtApp/main.cpp \
 		../QtApp/mainwindow.cpp \
 		../QtApp/imagearea.cpp \
-		../QtApp/mnistfilereader.cpp qrc_resources.cpp \
+		../QtApp/mnistfilereader.cpp \
+		../QtApp/labelfilereader.cpp qrc_resources.cpp \
 		moc_mainwindow.cpp \
 		moc_imagearea.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		imagearea.o \
 		mnistfilereader.o \
+		labelfilereader.o \
 		qrc_resources.o \
 		moc_mainwindow.o \
 		moc_imagearea.o
@@ -139,10 +141,12 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../QtApp/QtApp.pro ../QtApp/mainwindow.h \
 		../QtApp/imagearea.h \
-		../QtApp/mnistfilereader.h ../QtApp/main.cpp \
+		../QtApp/mnistfilereader.h \
+		../QtApp/labelfilereader.h ../QtApp/main.cpp \
 		../QtApp/mainwindow.cpp \
 		../QtApp/imagearea.cpp \
-		../QtApp/mnistfilereader.cpp
+		../QtApp/mnistfilereader.cpp \
+		../QtApp/labelfilereader.cpp
 QMAKE_TARGET  = QtApp
 DESTDIR       = 
 TARGET        = QtApp
@@ -331,8 +335,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../QtApp/resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../QtApp/mainwindow.h ../QtApp/imagearea.h ../QtApp/mnistfilereader.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../QtApp/main.cpp ../QtApp/mainwindow.cpp ../QtApp/imagearea.cpp ../QtApp/mnistfilereader.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../QtApp/mainwindow.h ../QtApp/imagearea.h ../QtApp/mnistfilereader.h ../QtApp/labelfilereader.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../QtApp/main.cpp ../QtApp/mainwindow.cpp ../QtApp/imagearea.cpp ../QtApp/mnistfilereader.cpp ../QtApp/labelfilereader.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../QtApp/mainwindow.ui $(DISTDIR)/
 
 
@@ -411,7 +415,8 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 ####### Compile
 
 main.o: ../QtApp/main.cpp ../QtApp/mainwindow.h \
-		../QtApp/imagearea.h
+		../QtApp/imagearea.h \
+		../QtApp/mnistfilereader.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../QtApp/main.cpp
 
 mainwindow.o: ../QtApp/mainwindow.cpp ../QtApp/mainwindow.h \
@@ -424,6 +429,9 @@ imagearea.o: ../QtApp/imagearea.cpp ../QtApp/imagearea.h
 
 mnistfilereader.o: ../QtApp/mnistfilereader.cpp ../QtApp/mnistfilereader.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mnistfilereader.o ../QtApp/mnistfilereader.cpp
+
+labelfilereader.o: ../QtApp/labelfilereader.cpp ../QtApp/labelfilereader.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o labelfilereader.o ../QtApp/labelfilereader.cpp
 
 qrc_resources.o: qrc_resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp

@@ -1,18 +1,27 @@
 #include "mnistfilereader.h"
 
 #include <fstream>
+#include <endian.h>
 
 MnistFileReader::MnistFileReader(const char* fileName)
 {
     source = std::ifstream(fileName);
 
-    // todo - check if stream is opened
+    // todo - throw exception is stream is not opened
+    bool isopen = source.is_open();
+
+    source.read((char *)&magicNumber, 4);
+    source.read((char *)&numberOfImages, 4);
+    source.read((char *)&numberOfRows, 4);
+    source.read((char *)&numberOfColumns, 4);
+
+    magicNumber = be32toh(magicNumber);
+    numberOfImages = be32toh(numberOfImages);
+    numberOfRows = be32toh(numberOfRows);
+    numberOfColumns = be32toh(numberOfColumns);
+    imageLength = numberOfRows * numberOfColumns;
 }
 
-unsigned char*  MnistFileReader:: getNextImage(){
-    char c = source.get();
-    while (ifs.good()) {
-      std::cout << c;
-      c = ifs.get();
-    }
+void MnistFileReader:: getNextImage(char* target){
+    source.read(target, imageLength);
 }
