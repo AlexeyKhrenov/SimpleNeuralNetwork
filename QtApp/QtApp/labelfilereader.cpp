@@ -20,3 +20,5 @@ char LabelFileReader::getNextLabel(){
     char result;
     source.read(&result, 1);
 }
+
+// todo - add disposing of file stream

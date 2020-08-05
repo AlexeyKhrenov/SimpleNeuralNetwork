@@ -16,6 +16,7 @@
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
@@ -43,6 +44,7 @@ public:
     QTextEdit *textEdit;
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout;
+    QLabel *warningLabel;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuEdit;
@@ -109,6 +111,9 @@ public:
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
+        warningLabel = new QLabel(centralWidget);
+        warningLabel->setObjectName(QStringLiteral("warningLabel"));
+        warningLabel->setGeometry(QRect(10, 450, 401, 17));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -158,6 +163,7 @@ public:
         actionCut->setText(QApplication::translate("MainWindow", "Cut", Q_NULLPTR));
         actionUndo->setText(QApplication::translate("MainWindow", "Undo", Q_NULLPTR));
         actionRedo->setText(QApplication::translate("MainWindow", "Redo", Q_NULLPTR));
+        warningLabel->setText(QApplication::translate("MainWindow", "...", Q_NULLPTR));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", Q_NULLPTR));
         menuEdit->setTitle(QApplication::translate("MainWindow", "Edit", Q_NULLPTR));
     } // retranslateUi

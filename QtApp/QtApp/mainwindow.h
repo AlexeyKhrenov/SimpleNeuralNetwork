@@ -9,6 +9,8 @@
 #include <QPainter>
 #include <imagearea.h>
 
+#include <model.h>
+
 namespace Ui {
     class MainWindow;
 }
@@ -24,22 +26,15 @@ public:
     virtual void paintEvent(QPaintEvent *event);
     ImageArea *imageArea;
 
+    void fromModel(Model* model);
+    void updateFromModel();
+
 private slots:
-    void on_actionNew_triggered();
-
-    void on_actionOpen_triggered();
-
-    void on_actionSave_triggered();
-
-    void on_actionExit_triggered();
-
-    void on_actionCopy_triggered();
-
-    void on_actionPaste_triggered();
 
 private:
     Ui::MainWindow *ui;
     QString currentFile = "";
+    Model* model;
 };
 
 #endif // MAINWINDOW_H

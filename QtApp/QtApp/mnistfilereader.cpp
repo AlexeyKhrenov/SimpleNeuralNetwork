@@ -25,3 +25,6 @@ MnistFileReader::MnistFileReader(const char* fileName)
 void MnistFileReader:: getNextImage(char* target){
     source.read(target, imageLength);
 }
+
+// todo - add disposing of file stream
+

@@ -1,6 +1,9 @@
-#include "model.h"
+#include <model.h>
 
-model::model()
+Model::Model(void (*callback)())
 {
-
+    warning = "No files are selected yet";
+    callback();
 }
+
+

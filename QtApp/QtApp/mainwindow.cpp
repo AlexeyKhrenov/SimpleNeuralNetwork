@@ -4,6 +4,7 @@
 #include <QHBoxLayout>
 #include <qpushbutton.h>
 #include <QThread>
+#include <model.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -37,51 +38,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->gridLayout->addWidget(button2, 0, 1, Qt::AlignCenter);
     ui->gridLayout->addWidget(button3, 1, 0, Qt::AlignCenter);
     ui->gridLayout->addWidget(imageArea, 1, 1, Qt::AlignCenter);
-
-
 }
-
-
 
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-void MainWindow::on_actionNew_triggered()
-{
-    currentFile.clear();
-    ui->textEdit->setText(QString());
-}
-
-void MainWindow::on_actionOpen_triggered()
-{
-    for(int i = 0; i < 10; i++)
-    {
-        QThread::msleep(400);
-        imageArea->image.fill(i * 10);
-        imageArea->repaint();
-    }
-}
-
-void MainWindow::on_actionSave_triggered()
-{
-
-}
-
-void MainWindow::on_actionExit_triggered()
-{
-    QApplication::quit();
-}
-
-void MainWindow::on_actionCopy_triggered()
-{
-    ui->textEdit->copy();
-}
-
-void MainWindow::on_actionPaste_triggered()
-{
-    ui->textEdit->paste();
 }
 
 void MainWindow::paintEvent(QPaintEvent *event)
@@ -89,4 +50,13 @@ void MainWindow::paintEvent(QPaintEvent *event)
     QPainter painter(this);
 
     painter.drawRect(QRect(80, 120, 200, 100));
+}
+
+void MainWindow::fromModel(Model* model){
+    this->model = model;
+    updateFromModel();
+}
+
+void MainWindow::updateFromModel(){
+    this->ui->warningLabel->setText(QString(model->warning));
 }
