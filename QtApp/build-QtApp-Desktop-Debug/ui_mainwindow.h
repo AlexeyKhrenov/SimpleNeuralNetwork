@@ -13,15 +13,18 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QGraphicsView>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QToolBar>
+#include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -39,25 +42,43 @@ public:
     QAction *actionUndo;
     QAction *actionRedo;
     QWidget *centralWidget;
-    QGraphicsView *graphicsView;
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout;
-    QLabel *warningLabel;
     QLabel *imagesLabel;
     QLabel *labelsLabel;
     QLabel *imagesLabelValue;
     QLabel *labelLabelValue;
+    QGroupBox *groupBox;
+    QLabel *label;
+    QLabel *label_2;
+    QLabel *label_3;
+    QLabel *label_4;
+    QGroupBox *groupBox_2;
+    QLabel *label_5;
+    QLabel *label_6;
+    QLabel *label_7;
+    QLabel *label_8;
+    QComboBox *comboBox;
+    QLabel *label_9;
+    QLabel *label_10;
+    QLineEdit *lineEdit;
+    QTextBrowser *textOutput;
+    QPushButton *pushButton;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuEdit;
-    QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(703, 575);
+        MainWindow->resize(502, 434);
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(MainWindow->sizePolicy().hasHeightForWidth());
+        MainWindow->setSizePolicy(sizePolicy);
         actionNew = new QAction(MainWindow);
         actionNew->setObjectName(QStringLiteral("actionNew"));
         QIcon icon;
@@ -93,20 +114,14 @@ public:
         actionRedo->setObjectName(QStringLiteral("actionRedo"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        graphicsView = new QGraphicsView(centralWidget);
-        graphicsView->setObjectName(QStringLiteral("graphicsView"));
-        graphicsView->setGeometry(QRect(430, 10, 256, 192));
         gridLayoutWidget = new QWidget(centralWidget);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(10, 210, 681, 231));
+        gridLayoutWidget->setGeometry(QRect(260, 10, 51, 51));
         gridLayout = new QGridLayout(gridLayoutWidget);
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
-        warningLabel = new QLabel(centralWidget);
-        warningLabel->setObjectName(QStringLiteral("warningLabel"));
-        warningLabel->setGeometry(QRect(10, 450, 401, 17));
         imagesLabel = new QLabel(centralWidget);
         imagesLabel->setObjectName(QStringLiteral("imagesLabel"));
         imagesLabel->setGeometry(QRect(30, 20, 67, 17));
@@ -119,18 +134,64 @@ public:
         labelLabelValue = new QLabel(centralWidget);
         labelLabelValue->setObjectName(QStringLiteral("labelLabelValue"));
         labelLabelValue->setGeometry(QRect(30, 110, 321, 17));
+        groupBox = new QGroupBox(centralWidget);
+        groupBox->setObjectName(QStringLiteral("groupBox"));
+        groupBox->setGeometry(QRect(260, 70, 211, 91));
+        label = new QLabel(groupBox);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(10, 30, 67, 17));
+        label_2 = new QLabel(groupBox);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(10, 50, 67, 17));
+        label_3 = new QLabel(groupBox);
+        label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setGeometry(QRect(110, 30, 67, 17));
+        label_4 = new QLabel(groupBox);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setGeometry(QRect(110, 50, 67, 17));
+        groupBox_2 = new QGroupBox(centralWidget);
+        groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
+        groupBox_2->setGeometry(QRect(260, 170, 211, 91));
+        label_5 = new QLabel(groupBox_2);
+        label_5->setObjectName(QStringLiteral("label_5"));
+        label_5->setGeometry(QRect(10, 30, 67, 17));
+        label_6 = new QLabel(groupBox_2);
+        label_6->setObjectName(QStringLiteral("label_6"));
+        label_6->setGeometry(QRect(10, 50, 81, 17));
+        label_7 = new QLabel(groupBox_2);
+        label_7->setObjectName(QStringLiteral("label_7"));
+        label_7->setGeometry(QRect(110, 30, 67, 17));
+        label_8 = new QLabel(groupBox_2);
+        label_8->setObjectName(QStringLiteral("label_8"));
+        label_8->setGeometry(QRect(110, 50, 67, 17));
+        comboBox = new QComboBox(centralWidget);
+        comboBox->setObjectName(QStringLiteral("comboBox"));
+        comboBox->setGeometry(QRect(80, 150, 121, 25));
+        label_9 = new QLabel(centralWidget);
+        label_9->setObjectName(QStringLiteral("label_9"));
+        label_9->setGeometry(QRect(30, 150, 67, 21));
+        label_9->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        label_10 = new QLabel(centralWidget);
+        label_10->setObjectName(QStringLiteral("label_10"));
+        label_10->setGeometry(QRect(30, 180, 41, 21));
+        lineEdit = new QLineEdit(centralWidget);
+        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+        lineEdit->setGeometry(QRect(80, 180, 121, 25));
+        textOutput = new QTextBrowser(centralWidget);
+        textOutput->setObjectName(QStringLiteral("textOutput"));
+        textOutput->setGeometry(QRect(30, 280, 441, 101));
+        pushButton = new QPushButton(centralWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(30, 220, 89, 25));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 703, 22));
+        menuBar->setGeometry(QRect(0, 0, 502, 22));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         menuEdit = new QMenu(menuBar);
         menuEdit->setObjectName(QStringLiteral("menuEdit"));
         MainWindow->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(MainWindow);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         MainWindow->setStatusBar(statusBar);
@@ -146,10 +207,6 @@ public:
         menuEdit->addAction(actionCut);
         menuEdit->addAction(actionUndo);
         menuEdit->addAction(actionRedo);
-        mainToolBar->addAction(actionNew);
-        mainToolBar->addAction(actionOpen);
-        mainToolBar->addAction(actionSave);
-        mainToolBar->addAction(actionCopy);
 
         retranslateUi(MainWindow);
 
@@ -168,11 +225,23 @@ public:
         actionCut->setText(QApplication::translate("MainWindow", "Cut", Q_NULLPTR));
         actionUndo->setText(QApplication::translate("MainWindow", "Undo", Q_NULLPTR));
         actionRedo->setText(QApplication::translate("MainWindow", "Redo", Q_NULLPTR));
-        warningLabel->setText(QApplication::translate("MainWindow", "...", Q_NULLPTR));
         imagesLabel->setText(QApplication::translate("MainWindow", "Images:", Q_NULLPTR));
         labelsLabel->setText(QApplication::translate("MainWindow", "Labels:", Q_NULLPTR));
         imagesLabelValue->setText(QApplication::translate("MainWindow", "...", Q_NULLPTR));
         labelLabelValue->setText(QApplication::translate("MainWindow", "...", Q_NULLPTR));
+        groupBox->setTitle(QApplication::translate("MainWindow", "File read", Q_NULLPTR));
+        label->setText(QApplication::translate("MainWindow", "Label:", Q_NULLPTR));
+        label_2->setText(QApplication::translate("MainWindow", "Position:", Q_NULLPTR));
+        label_3->setText(QApplication::translate("MainWindow", "-1", Q_NULLPTR));
+        label_4->setText(QApplication::translate("MainWindow", "-1", Q_NULLPTR));
+        groupBox_2->setTitle(QApplication::translate("MainWindow", "AI", Q_NULLPTR));
+        label_5->setText(QApplication::translate("MainWindow", "Detected:", Q_NULLPTR));
+        label_6->setText(QApplication::translate("MainWindow", "Accuracy, %", Q_NULLPTR));
+        label_7->setText(QApplication::translate("MainWindow", "-1", Q_NULLPTR));
+        label_8->setText(QApplication::translate("MainWindow", "0", Q_NULLPTR));
+        label_9->setText(QApplication::translate("MainWindow", "Mode:", Q_NULLPTR));
+        label_10->setText(QApplication::translate("MainWindow", "Step:", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("MainWindow", "Start", Q_NULLPTR));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", Q_NULLPTR));
         menuEdit->setTitle(QApplication::translate("MainWindow", "Edit", Q_NULLPTR));
     } // retranslateUi

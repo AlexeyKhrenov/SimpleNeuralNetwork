@@ -13,11 +13,11 @@ ImageArea::ImageArea(QWidget *parent) : QWidget(parent)
 
     image = QImage(28, 28, QImage::Format_Grayscale8);
 
-    this->setFixedSize(100,100);
+    this->setFixedSize(40,40);
 }
 
 void ImageArea::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
-    painter.drawImage(1, 1, image);
+    painter.drawImage(6, 6, image);
 }

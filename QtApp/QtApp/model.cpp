@@ -9,6 +9,8 @@ Model::Model(std::function<void()> callback, const char* imageFile, const char* 
     this->imageFile = imageFile;
     this->labelFile = labelFile;
 
+    warning = "Everything's ok";
+
     if(!mnistFileReader.isOpen){
         warning = "Couldn't open image file \n";
     }

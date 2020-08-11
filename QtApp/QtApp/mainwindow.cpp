@@ -28,16 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QPushButton *button5 = new QPushButton("Five");
 
     QHBoxLayout *layout = new QHBoxLayout;
-    layout->addWidget(button1);
-    layout->addWidget(button2);
-    layout->addWidget(button3);
-    layout->addWidget(button4);
-    layout->addWidget(button5);
-
-    ui->gridLayout->addWidget(button1, 0, 0, Qt::AlignCenter);
-    ui->gridLayout->addWidget(button2, 0, 1, Qt::AlignCenter);
-    ui->gridLayout->addWidget(button3, 1, 0, Qt::AlignCenter);
-    ui->gridLayout->addWidget(imageArea, 1, 1, Qt::AlignCenter);
+    ui->gridLayout->addWidget(imageArea, 0, 0, Qt::AlignCenter);
 }
 
 MainWindow::~MainWindow()
@@ -56,7 +47,7 @@ void MainWindow::fromModel(Model* model){
 }
 
 void MainWindow::updateFromModel(){
-    ui->warningLabel->setText(QString(model->warning));
+    ui->textOutput->setText(QString(model->warning));
     ui->labelLabelValue->setText(QString(model->labelFile));
     ui->imagesLabelValue->setText(QString(model->imageFile));
 }
