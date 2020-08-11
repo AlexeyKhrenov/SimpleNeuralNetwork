@@ -9,7 +9,12 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
-    Model model(w.updateFromModel);
+    std::function<void()> fp = std::bind(&MainWindow::updateFromModel, &w);
+
+    // update from model
+    Model model(fp);
 
     w.fromModel(&model);
+
+    return a.exec();
 }

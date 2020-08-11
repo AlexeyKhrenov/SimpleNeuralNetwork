@@ -58,5 +58,5 @@ void MainWindow::fromModel(Model* model){
 }
 
 void MainWindow::updateFromModel(){
-    this->ui->warningLabel->setText(QString(model->warning));
+    ui->warningLabel->setText(QString(model->warning));
 }

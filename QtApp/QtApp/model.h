@@ -1,10 +1,12 @@
 #ifndef MODEL_H
 #define MODEL_H
 
+#include <functional>
+
 class Model
 {
 public:
-    Model(void* callback());
+    Model(std::function<void()> callback);
 
     // image
     unsigned char* image;
