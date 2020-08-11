@@ -47,9 +47,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::paintEvent(QPaintEvent *event)
 {
-    QPainter painter(this);
-
-    painter.drawRect(QRect(80, 120, 200, 100));
+    //QPainter painter(this);
 }
 
 void MainWindow::fromModel(Model* model){
@@ -59,4 +57,6 @@ void MainWindow::fromModel(Model* model){
 
 void MainWindow::updateFromModel(){
     ui->warningLabel->setText(QString(model->warning));
+    ui->labelLabelValue->setText(QString(model->labelFile));
+    ui->imagesLabelValue->setText(QString(model->imageFile));
 }

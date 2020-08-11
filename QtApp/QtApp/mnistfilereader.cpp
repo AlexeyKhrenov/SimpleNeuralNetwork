@@ -8,7 +8,7 @@ MnistFileReader::MnistFileReader(const char* fileName)
     source = std::ifstream(fileName);
 
     // todo - throw exception is stream is not opened
-    bool isopen = source.is_open();
+    isOpen = source.is_open();
 
     source.read((char *)&magicNumber, 4);
     source.read((char *)&numberOfImages, 4);

@@ -21,7 +21,6 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
@@ -41,10 +40,13 @@ public:
     QAction *actionRedo;
     QWidget *centralWidget;
     QGraphicsView *graphicsView;
-    QTextEdit *textEdit;
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout;
     QLabel *warningLabel;
+    QLabel *imagesLabel;
+    QLabel *labelsLabel;
+    QLabel *imagesLabelValue;
+    QLabel *labelLabelValue;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuEdit;
@@ -94,15 +96,6 @@ public:
         graphicsView = new QGraphicsView(centralWidget);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
         graphicsView->setGeometry(QRect(430, 10, 256, 192));
-        textEdit = new QTextEdit(centralWidget);
-        textEdit->setObjectName(QStringLiteral("textEdit"));
-        textEdit->setGeometry(QRect(10, 10, 200, 192));
-        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(textEdit->sizePolicy().hasHeightForWidth());
-        textEdit->setSizePolicy(sizePolicy);
-        textEdit->setMaximumSize(QSize(200, 200));
         gridLayoutWidget = new QWidget(centralWidget);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
         gridLayoutWidget->setGeometry(QRect(10, 210, 681, 231));
@@ -114,6 +107,18 @@ public:
         warningLabel = new QLabel(centralWidget);
         warningLabel->setObjectName(QStringLiteral("warningLabel"));
         warningLabel->setGeometry(QRect(10, 450, 401, 17));
+        imagesLabel = new QLabel(centralWidget);
+        imagesLabel->setObjectName(QStringLiteral("imagesLabel"));
+        imagesLabel->setGeometry(QRect(30, 20, 67, 17));
+        labelsLabel = new QLabel(centralWidget);
+        labelsLabel->setObjectName(QStringLiteral("labelsLabel"));
+        labelsLabel->setGeometry(QRect(30, 80, 67, 17));
+        imagesLabelValue = new QLabel(centralWidget);
+        imagesLabelValue->setObjectName(QStringLiteral("imagesLabelValue"));
+        imagesLabelValue->setGeometry(QRect(30, 50, 321, 17));
+        labelLabelValue = new QLabel(centralWidget);
+        labelLabelValue->setObjectName(QStringLiteral("labelLabelValue"));
+        labelLabelValue->setGeometry(QRect(30, 110, 321, 17));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -164,6 +169,10 @@ public:
         actionUndo->setText(QApplication::translate("MainWindow", "Undo", Q_NULLPTR));
         actionRedo->setText(QApplication::translate("MainWindow", "Redo", Q_NULLPTR));
         warningLabel->setText(QApplication::translate("MainWindow", "...", Q_NULLPTR));
+        imagesLabel->setText(QApplication::translate("MainWindow", "Images:", Q_NULLPTR));
+        labelsLabel->setText(QApplication::translate("MainWindow", "Labels:", Q_NULLPTR));
+        imagesLabelValue->setText(QApplication::translate("MainWindow", "...", Q_NULLPTR));
+        labelLabelValue->setText(QApplication::translate("MainWindow", "...", Q_NULLPTR));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", Q_NULLPTR));
         menuEdit->setTitle(QApplication::translate("MainWindow", "Edit", Q_NULLPTR));
     } // retranslateUi

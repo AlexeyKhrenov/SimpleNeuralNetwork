@@ -2,11 +2,13 @@
 #define MODEL_H
 
 #include <functional>
+#include <mnistfilereader.h>
+#include <labelfilereader.h>
 
 class Model
 {
 public:
-    Model(std::function<void()> callback);
+    Model(std::function<void()> callback, const char* imageFile, const char* labelFile);
 
     // image
     unsigned char* image;
@@ -22,8 +24,8 @@ public:
 
     // file
     int position;
-    char* imageFile;
-    char* labelFile;
+    const char* imageFile;
+    const char* labelFile;
 
     void setTrainingMode(bool isTrainingMode);
     void setStep(int step);
@@ -33,7 +35,8 @@ public:
 
     char* warning;
 private:
-
+    MnistFileReader mnistFileReader;
+    LabelFileReader labelFileReader;
 };
 
 #endif // MODEL_H

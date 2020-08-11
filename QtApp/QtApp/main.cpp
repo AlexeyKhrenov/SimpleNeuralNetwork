@@ -11,8 +11,10 @@ int main(int argc, char *argv[])
 
     std::function<void()> fp = std::bind(&MainWindow::updateFromModel, &w);
 
+    const char* imageFile = "../train-images.idx3-ubyte";
+    const char* labelFile = "../train-labels.idx1-ubyte";
     // update from model
-    Model model(fp);
+    Model model(fp, imageFile, labelFile);
 
     w.fromModel(&model);
 

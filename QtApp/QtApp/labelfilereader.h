@@ -13,6 +13,8 @@ public:
 
     char getNextLabel();
 
+    bool isOpen;
+
 private:
     std::ifstream source;
 };

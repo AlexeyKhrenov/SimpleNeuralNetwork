@@ -14,6 +14,7 @@ public:
     int numberOfColumns;
 
     void getNextImage(char* target);
+    bool isOpen;
 
 private:
     std::ifstream source;
