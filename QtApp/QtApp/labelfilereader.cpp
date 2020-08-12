@@ -17,8 +17,9 @@ LabelFileReader::LabelFileReader(const char* fileName)
 }
 
 char LabelFileReader::getNextLabel(){
-    char result;
+    char result = 0;
     source.read(&result, 1);
+    return result;
 }
 
 // todo - add disposing of file stream

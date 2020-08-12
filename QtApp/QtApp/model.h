@@ -11,7 +11,7 @@ public:
     Model(std::function<void()> callback, const char* imageFile, const char* labelFile);
 
     // image
-    unsigned char* image;
+    char image[28*28];
     int imageHeight;
     int imageWidth;
 
@@ -20,14 +20,14 @@ public:
     char label;
     char detected;
     int step;
-    bool isTrainingMode;
+    bool isTestingMode;
 
     // file
     int position;
     const char* imageFile;
     const char* labelFile;
 
-    void setTrainingMode(bool isTrainingMode);
+    void setTrainingMode(bool isTestingMode);
     void setStep(int step);
     void start();
     void selectImageFile(char* imageFile);
@@ -37,6 +37,7 @@ public:
 private:
     MnistFileReader mnistFileReader;
     LabelFileReader labelFileReader;
+    std::function<void()> callback;
 };
 
 #endif // MODEL_H

@@ -89,7 +89,7 @@
       <x>260</x>
       <y>70</y>
       <width>211</width>
-      <height>91</height>
+      <height>81</height>
      </rect>
     </property>
     <property name="title">
@@ -121,7 +121,7 @@
       <string>Position:</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_3">
+    <widget class="QLabel" name="labelValue">
      <property name="geometry">
       <rect>
        <x>110</x>
@@ -134,7 +134,7 @@
       <string>-1</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_4">
+    <widget class="QLabel" name="positionValue">
      <property name="geometry">
       <rect>
        <x>110</x>
@@ -154,7 +154,7 @@
       <x>260</x>
       <y>170</y>
       <width>211</width>
-      <height>91</height>
+      <height>81</height>
      </rect>
     </property>
     <property name="title">
@@ -252,7 +252,7 @@
      <string>Step:</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="stepEdit">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -260,6 +260,9 @@
       <width>121</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
    <widget class="QTextBrowser" name="textOutput">
