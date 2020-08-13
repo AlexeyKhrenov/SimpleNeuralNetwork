@@ -3,12 +3,13 @@
 #include <mnistfilereader.h>
 #include <labelfilereader.h>
 
-Model::Model(std::function<void()> callback, const char* imageFile, const char* labelFile)
+Model::Model(std::function<void()> callback, const char* imageFile, const char* labelFile, INeuralNetwork* ai)
     : mnistFileReader(imageFile), labelFileReader(labelFile)
 {
     this->imageFile = imageFile;
     this->labelFile = labelFile;
     this->callback = callback;
+    this->ai = ai;
 
     warning = "Everything's ok";
 
@@ -24,12 +25,11 @@ Model::Model(std::function<void()> callback, const char* imageFile, const char* 
 
     isTestingMode = false;
 
-    label = labelFileReader.getNextLabel();
-
-    char *p;
-    p = image;
-    mnistFileReader.getNextImage(p);
     position = 0;
+    errorNum = 0;
+    step = 1;
+
+    start();
 }
 
 void Model::setTrainingMode(bool isTestingMode){
@@ -53,8 +53,39 @@ void Model::setStep(int step){
 }
 
 void Model::start(){
-    warning = "Started";
-    callback();
 
-    // todo - add some neurologic here
+    if(position >= mnistFileReader.numberOfImages -1){
+        warning = "Reached the end of the dataset sequence";
+        callback();
+        return;
+    }
+
+    if(position + step > mnistFileReader.numberOfImages){
+        warning = "Step is too large";
+        callback();
+        return;
+    }
+
+    for(int i = 0; i < step; i++){
+        label = labelFileReader.getNextLabel();
+        mnistFileReader.getNextImage(image);
+
+        if(isTestingMode){
+            detected = ai->RecognizeImage(image);
+        }
+        else{
+            detected = ai->RecognizeAndTrain(image, label);
+        }
+
+        if(label != detected){
+            errorNum++;
+        }
+
+        accuracy = 100 - errorNum * 100/ (position + 1);
+
+        position++;
+    }
+
+    warning = "Finished";
+    callback();
 }

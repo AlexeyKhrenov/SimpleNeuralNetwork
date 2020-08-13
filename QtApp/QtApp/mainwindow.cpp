@@ -54,23 +54,27 @@ void MainWindow::fromModel(Model* model){
 }
 
 void MainWindow::updateFromModel(){
-    ui->labelLabelValue->setText(QString(model->labelFile));
-    ui->imagesLabelValue->setText(QString(model->imageFile));
+    if(model != NULL){
+        ui->labelLabelValue->setText(QString(model->labelFile));
+        ui->imagesLabelValue->setText(QString(model->imageFile));
 
-    ui->comboBox->setCurrentIndex((int)model->isTestingMode);
-    ui->stepEdit->setText(QString::number(model->step));
+        ui->comboBox->setCurrentIndex((int)model->isTestingMode);
+        ui->stepEdit->setText(QString::number(model->step));
 
-    ui->labelValue->setText(QString::number(model->label));
-    ui->positionValue->setText(QString::number(model->position));
+        ui->labelValue->setText(QString::number(model->label));
+        ui->positionValue->setText(QString::number(model->position));
 
-    ui->textOutput->setText(QString(model->warning));
+        ui->textOutput->setText(QString(model->warning));
 
-    char *t = model->image;
+        ui->detectedValue->setText(QString::number(model->detected));
+        ui->accuracyValue->setText(QString::number(model->accuracy));
 
-    for(int i = 0; i < 28; i++){
-        for(int j = 0; j < 28; j++){
-            imageArea->image.setPixelColor(j, i, model->image[i * 28 + j]);
+        for(int i = 0; i < 28; i++){
+            for(int j = 0; j < 28; j++){
+                imageArea->image.setPixelColor(j, i, model->image[i * 28 + j]);
+            }
         }
+        imageArea->repaint();
     }
 }
 

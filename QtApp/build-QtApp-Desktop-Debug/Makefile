@@ -55,7 +55,8 @@ SOURCES       = ../QtApp/main.cpp \
 		../QtApp/imagearea.cpp \
 		../QtApp/mnistfilereader.cpp \
 		../QtApp/labelfilereader.cpp \
-		../QtApp/model.cpp qrc_resources.cpp \
+		../QtApp/model.cpp \
+		../QtApp/neuralnetworkmock.cpp qrc_resources.cpp \
 		moc_mainwindow.cpp \
 		moc_imagearea.cpp
 OBJECTS       = main.o \
@@ -64,6 +65,7 @@ OBJECTS       = main.o \
 		mnistfilereader.o \
 		labelfilereader.o \
 		model.o \
+		neuralnetworkmock.o \
 		qrc_resources.o \
 		moc_mainwindow.o \
 		moc_imagearea.o
@@ -145,12 +147,15 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../QtApp/imagearea.h \
 		../QtApp/mnistfilereader.h \
 		../QtApp/labelfilereader.h \
-		../QtApp/model.h ../QtApp/main.cpp \
+		../QtApp/model.h \
+		../QtApp/ineuralnetwork.h \
+		../QtApp/neuralnetworkmock.h ../QtApp/main.cpp \
 		../QtApp/mainwindow.cpp \
 		../QtApp/imagearea.cpp \
 		../QtApp/mnistfilereader.cpp \
 		../QtApp/labelfilereader.cpp \
-		../QtApp/model.cpp
+		../QtApp/model.cpp \
+		../QtApp/neuralnetworkmock.cpp
 QMAKE_TARGET  = QtApp
 DESTDIR       = 
 TARGET        = QtApp
@@ -339,8 +344,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../QtApp/resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../QtApp/mainwindow.h ../QtApp/imagearea.h ../QtApp/mnistfilereader.h ../QtApp/labelfilereader.h ../QtApp/model.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../QtApp/main.cpp ../QtApp/mainwindow.cpp ../QtApp/imagearea.cpp ../QtApp/mnistfilereader.cpp ../QtApp/labelfilereader.cpp ../QtApp/model.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../QtApp/mainwindow.h ../QtApp/imagearea.h ../QtApp/mnistfilereader.h ../QtApp/labelfilereader.h ../QtApp/model.h ../QtApp/ineuralnetwork.h ../QtApp/neuralnetworkmock.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../QtApp/main.cpp ../QtApp/mainwindow.cpp ../QtApp/imagearea.cpp ../QtApp/mnistfilereader.cpp ../QtApp/labelfilereader.cpp ../QtApp/model.cpp ../QtApp/neuralnetworkmock.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../QtApp/mainwindow.ui $(DISTDIR)/
 
 
@@ -389,6 +394,9 @@ compiler_moc_header_make_all: moc_mainwindow.cpp moc_imagearea.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_mainwindow.cpp moc_imagearea.cpp
 moc_mainwindow.cpp: ../QtApp/imagearea.h \
+		../QtApp/model.h \
+		../QtApp/mnistfilereader.h \
+		../QtApp/labelfilereader.h \
 		../QtApp/mainwindow.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -420,11 +428,16 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 main.o: ../QtApp/main.cpp ../QtApp/mainwindow.h \
 		../QtApp/imagearea.h \
-		../QtApp/mnistfilereader.h
+		../QtApp/model.h \
+		../QtApp/mnistfilereader.h \
+		../QtApp/labelfilereader.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../QtApp/main.cpp
 
 mainwindow.o: ../QtApp/mainwindow.cpp ../QtApp/mainwindow.h \
 		../QtApp/imagearea.h \
+		../QtApp/model.h \
+		../QtApp/mnistfilereader.h \
+		../QtApp/labelfilereader.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../QtApp/mainwindow.cpp
 
@@ -437,8 +450,14 @@ mnistfilereader.o: ../QtApp/mnistfilereader.cpp ../QtApp/mnistfilereader.h
 labelfilereader.o: ../QtApp/labelfilereader.cpp ../QtApp/labelfilereader.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o labelfilereader.o ../QtApp/labelfilereader.cpp
 
-model.o: ../QtApp/model.cpp ../QtApp/model.h
+model.o: ../QtApp/model.cpp ../QtApp/model.h \
+		../QtApp/mnistfilereader.h \
+		../QtApp/labelfilereader.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o model.o ../QtApp/model.cpp
+
+neuralnetworkmock.o: ../QtApp/neuralnetworkmock.cpp ../QtApp/neuralnetworkmock.h \
+		../QtApp/ineuralnetwork.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o neuralnetworkmock.o ../QtApp/neuralnetworkmock.cpp
 
 qrc_resources.o: qrc_resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp

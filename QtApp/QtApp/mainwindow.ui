@@ -186,7 +186,7 @@
       <string>Accuracy, %</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_7">
+    <widget class="QLabel" name="detectedValue">
      <property name="geometry">
       <rect>
        <x>110</x>
@@ -199,7 +199,7 @@
       <string>-1</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_8">
+    <widget class="QLabel" name="accuracyValue">
      <property name="geometry">
       <rect>
        <x>110</x>

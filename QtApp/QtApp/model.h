@@ -4,11 +4,12 @@
 #include <functional>
 #include <mnistfilereader.h>
 #include <labelfilereader.h>
+#include <ineuralnetwork.h>
 
 class Model
 {
 public:
-    Model(std::function<void()> callback, const char* imageFile, const char* labelFile);
+    Model(std::function<void()> callback, const char* imageFile, const char* labelFile, INeuralNetwork* ai);
 
     // image
     char image[28*28];
@@ -38,6 +39,8 @@ private:
     MnistFileReader mnistFileReader;
     LabelFileReader labelFileReader;
     std::function<void()> callback;
+    INeuralNetwork* ai;
+    int errorNum;
 };
 
 #endif // MODEL_H

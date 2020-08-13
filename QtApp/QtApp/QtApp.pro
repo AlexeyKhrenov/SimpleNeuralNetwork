@@ -29,14 +29,17 @@ SOURCES += \
     imagearea.cpp \
     mnistfilereader.cpp \
     labelfilereader.cpp \
-    model.cpp
+    model.cpp \
+    neuralnetworkmock.cpp
 
 HEADERS += \
         mainwindow.h \
     imagearea.h \
     mnistfilereader.h \
     labelfilereader.h \
-    model.h
+    model.h \
+    ineuralnetwork.h \
+    neuralnetworkmock.h
 
 FORMS += \
         mainwindow.ui
