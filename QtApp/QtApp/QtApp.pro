@@ -30,7 +30,8 @@ SOURCES += \
     mnistfilereader.cpp \
     labelfilereader.cpp \
     model.cpp \
-    neuralnetworkmock.cpp
+    neuralnetworkmock.cpp \
+    ai.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -39,7 +40,8 @@ HEADERS += \
     labelfilereader.h \
     model.h \
     ineuralnetwork.h \
-    neuralnetworkmock.h
+    neuralnetworkmock.h \
+    ai.h
 
 FORMS += \
         mainwindow.ui
